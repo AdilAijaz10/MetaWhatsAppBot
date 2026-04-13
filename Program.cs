@@ -1,12 +1,14 @@
 using MetaWhatsAppBot.Repositories;
 using MetaWhatsAppBot.Repositories.Interfaces;
 using MetaWhatsAppBot.Services;
-using MetaWhatsAppBot.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ✅ Repositories
 builder.Services.AddScoped<IUserSessionRepository, UserSessionRepository>();
+
+// ✅ Services
+builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<IWhatsAppService, WhatsAppService>();
 
 builder.Services.AddControllers();
@@ -16,7 +18,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -1,4 +1,5 @@
-﻿using MetaWhatsAppBot.Services.Interfaces;
+﻿using MetaWhatsAppBot.Models;
+using MetaWhatsAppBot.Services;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
@@ -18,51 +19,83 @@ namespace MetaWhatsAppBot.Controllers
             _config = config;
         }
 
-        // Meta verification
+        // 🔹 VERIFY (GET)
         [HttpGet]
         public IActionResult Verify(
-            [FromQuery(Name = "hub.mode")] string mode,//Meta ka query parameter
-            [FromQuery(Name = "hub.verify_token")] string token, //webhook ka secret token
-            [FromQuery(Name = "hub.challenge")] string challenge) 
+            [FromQuery(Name = "hub.mode")] string mode,
+            [FromQuery(Name = "hub.verify_token")] string token,
+            [FromQuery(Name = "hub.challenge")] string challenge)
         {
-            //kya ye webhook valid hai ?
-            if (mode == "subscribe" && token == _config["MetaWhatsApp:VerifyToken"])
-                //Meta ko verify signal bhej hain
+            if (mode == "subscribe" &&
+                token == _config["MetaWhatsApp:VerifyToken"])
+            {
                 return Ok(challenge);
+            }
 
             return Unauthorized();
         }
 
-        // Receive messages
+        // 🔹 RECEIVE MESSAGES (POST)
         [HttpPost]
-        //Async hai kyunki hum service me await kar rahe hain.
-        public async Task<IActionResult> Receive()
+        public async Task<IActionResult> Receive([FromBody] WebhookPayload payload)
         {
-            //line request body read karti hai JSON format me.
-            var body = await Request.ReadFromJsonAsync<JsonElement>();
+            var errors = new List<string>();
 
-            //Check karta hai ki entry property exist karti hai ya nahi.
-            if (!body.TryGetProperty("entry", out var entries))
-                return Ok();
-            
-            //multiple changes keliye jese message ya status
-            foreach (var entry in entries.EnumerateArray())
+            if (payload?.Entry == null)
             {
-                foreach (var change in entry.GetProperty("changes").EnumerateArray())
+                return Ok(new
                 {
-                    if (!change.GetProperty("value").TryGetProperty("messages", out var messages))
+                    success = true,
+                    message = "No entries to process",
+                    errors = new List<string>()
+                });
+            }
+
+            foreach (var entry in payload.Entry)
+            {
+                foreach (var change in entry.Changes)
+                {
+                    var messages = change.Value?.Messages;
+
+                    if (messages == null)
                         continue;
 
-                    foreach (var msg in messages.EnumerateArray())
+                    foreach (var msg in messages)
                     {
-                        var from = msg.GetProperty("from").GetString()!;
-                        var text = msg.GetProperty("text").GetProperty("body").GetString()!;
-                        await _service.ProcessMessage(from, text);
+                        var from = msg.From;
+                        var text = msg.Text?.Body;
+
+                        if (string.IsNullOrEmpty(from) || string.IsNullOrEmpty(text))
+                        {
+                            errors.Add("Invalid message: missing sender or text");
+                            continue;
+                        }
+
+                        var success = await _service.ProcessMessage(from, text);
+                        if (!success)
+                        {
+                            errors.Add($"Failed to process message from {from}");
+                        }
                     }
                 }
             }
 
-            return Ok();
+            if (errors.Any())
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Some messages failed to process",
+                    errors = errors
+                });
+            }
+
+            return Ok(new
+            {
+                success = true,
+                message = "Processed successfully",
+                errors = new List<string>()
+            });
         }
     }
 }

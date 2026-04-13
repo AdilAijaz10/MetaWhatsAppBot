@@ -32,7 +32,13 @@
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "payload",
+        "Type": "MetaWhatsAppBot.Models.WebhookPayload",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

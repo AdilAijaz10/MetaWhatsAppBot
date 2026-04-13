@@ -1,96 +1,112 @@
 ﻿using MetaWhatsAppBot.Models;
 using MetaWhatsAppBot.Repositories.Interfaces;
-using MetaWhatsAppBot.Services.Interfaces;
 using System.Net;
 using System.Net.Http.Json;
 
 namespace MetaWhatsAppBot.Services
 {
+    using System.Net.Http.Headers;
+
     public class WhatsAppService : IWhatsAppService
     {
-        private readonly IUserSessionRepository _repo;
+        private readonly ISessionService _session;
         private readonly IConfiguration _config;
         private readonly HttpClient _http;
-        //DI
-        public WhatsAppService(IUserSessionRepository repo, IConfiguration config)
+
+        public WhatsAppService(ISessionService session, IConfiguration config)
         {
-            _repo = repo;
+            _session = session;
             _config = config;
             _http = new HttpClient();
         }
-        //very important function
-        public async Task ProcessMessage(string from, string message)
+
+        public async Task<bool> ProcessMessage(string from, string message)
         {
-            // 1. Session get karo
-            var session = await _repo.GetByPhoneAsync(from);
-
-            // 2. Agar new user hai tou chat start karega
-            if (session == null)
+            try
             {
-                session = new UserSession { PhoneNumber = from };
-                await _repo.AddAsync(session);
-            }
+                var session = await _session.GetByPhoneAsync(from);
 
-            // 3. Reply decide karo
-            string reply = session.Step switch
-            {
-                0 => "Please enter deceased person’s Name:",
-                1 => "Enter CNIC Number:",
-                2 => "Enter Mobile Number:",
-                3 => $"✅ Claim Success!\nName: {session.Name}\nCNIC: {session.CNIC}\nMobile: {session.MobileNumber}",
-                _ => "Your claim is already processed."
-            };
+                if (session == null)
+                {
+                    session = new UserSession
+                    {
+                        PhoneNumber = from,
+                        Step = 0
+                    };
 
-            // 4. Data save karo
-            switch (session.Step)
-            {
-                case 0:
-                    session.Step = 1;
-                    break;
+                    await _session.AddAsync(session);
+                    return await SendMessage(from, "Assalam-o-Alaikum! Apna Name batao");
+                }
 
-                case 1:
-                    //message aya wo store ho raha hai
+                if (session.Step == 0)
+                {
                     session.Name = message;
-                    session.Step = 2;
-                    break;
+                    session.Step = 1;
+                    await _session.UpdateAsync(session);
 
-                case 2:
+                    return await SendMessage(from, "CNIC number send karo");
+                }
+                else if (session.Step == 1)
+                {
                     session.CNIC = message;
-                    session.Step = 3;
-                    break;
+                    session.Step = 2;
+                    await _session.UpdateAsync(session);
 
-                case 3:
+                    return await SendMessage(from, "Mobile number send karo");
+                }
+                else if (session.Step == 2)
+                {
                     session.MobileNumber = message;
-                    session.Step = 4;
-                    break;
-            }
-            //data save
-            await _repo.UpdateAsync(session);
+                    session.Step = 3;
+                    await _session.UpdateAsync(session);
 
-            // 5. Reply send karo
-            await SendMessage(from, reply);
+                    return await SendMessage(from, "Claim success ho gaya 🎉");
+                }
+
+                return true; // If no message sent, still success
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error processing message: {ex.Message}");
+                return false;
+            }
         }
 
-        private async Task SendMessage(string to, string text)
+        private async Task<bool> SendMessage(string to, string text)
         {
-            var phoneId = _config["MetaWhatsApp:PhoneNumberId"];
             var token = _config["MetaWhatsApp:AccessToken"];
-            //Meta ka endpoint
-            var url = $"https://graph.facebook.com/v17.0/{phoneId}/messages";
-            //Ye JSON Meta ko ja raha hai
+            var phoneId = _config["MetaWhatsApp:PhoneNumberId"];
+
+            _http.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", token);
+
+            var url = $"https://graph.facebook.com/v20.0/{phoneId}/messages";
+
             var payload = new
             {
                 messaging_product = "whatsapp",
                 to = to,
+                type = "text",
                 text = new { body = text }
             };
 
-            var request = new HttpRequestMessage(HttpMethod.Post, url);
-            //meta whatsaap business api ka access token
-            request.Headers.Add("Authorization", $"Bearer {token}");
-            request.Content = JsonContent.Create(payload);
+            var response = await _http.PostAsJsonAsync(url, payload);
 
-            await _http.SendAsync(request);
+            // 👇 yahan check karo
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine("Error sending message:");
+                Console.WriteLine($"Status: {response.StatusCode}");
+                Console.WriteLine($"Response: {error}");
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Message sent successfully ✅");
+                return true;
+            }
         }
     }
 }

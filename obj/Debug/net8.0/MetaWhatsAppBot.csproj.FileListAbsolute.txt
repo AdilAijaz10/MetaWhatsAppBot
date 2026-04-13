@@ -34,3 +34,4 @@ D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\refint\MetaWha
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\MetaWhatsAppBot.pdb
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\MetaWhatsAppBot.genruntimeconfig.cache
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\ref\MetaWhatsAppBot.dll
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\MetaWhatsAppBot.sourcelink.json

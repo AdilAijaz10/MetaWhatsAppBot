@@ -43,6 +43,25 @@
         "tags": [
           "WhatsApp"
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookPayload"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookPayload"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhookPayload"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -51,5 +70,79 @@
       }
     }
   },
-  "components": { }
+  "components": {
+    "schemas": {
+      "Change": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/components/schemas/Value"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Entry": {
+        "type": "object",
+        "properties": {
+          "changes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Change"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Message": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "nullable": true
+          },
+          "text": {
+            "$ref": "#/components/schemas/Text"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Text": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Value": {
+        "type": "object",
+        "properties": {
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WebhookPayload": {
+        "type": "object",
+        "properties": {
+          "entry": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Entry"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
 }
