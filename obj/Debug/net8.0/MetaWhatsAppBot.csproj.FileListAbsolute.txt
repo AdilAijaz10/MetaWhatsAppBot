@@ -27,7 +27,6 @@ D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\staticwebasset
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\staticwebassets.development.json
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\swae.build.ex.cache
-D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\MetaWhat.5BBCD636.Up2Date
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\MetaWhatsAppBot.dll
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\refint\MetaWhatsAppBot.dll
@@ -35,3 +34,13 @@ D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\MetaWhatsAppBo
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\MetaWhatsAppBot.genruntimeconfig.cache
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\ref\MetaWhatsAppBot.dll
 D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\MetaWhatsAppBot.sourcelink.json
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\bin\Debug\net8.0\Oracle.ManagedDataAccess.dll
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\bin\Debug\net8.0\System.Diagnostics.PerformanceCounter.dll
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\bin\Debug\net8.0\System.DirectoryServices.Protocols.dll
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\bin\Debug\net8.0\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\bin\Debug\net8.0\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+D:\softwareProjects\.NetProjects\MetaWhatsAppBot\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

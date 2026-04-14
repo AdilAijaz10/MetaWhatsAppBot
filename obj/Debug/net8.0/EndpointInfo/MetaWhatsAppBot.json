@@ -5,6 +5,37 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/static-data": {
+      "post": {
+        "tags": [
+          "StaticData"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StaticPayloadRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StaticPayloadRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/StaticPayloadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/webhook": {
       "get": {
         "tags": [
@@ -103,6 +134,32 @@
           },
           "text": {
             "$ref": "#/components/schemas/Text"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StaticPayloadRequest": {
+        "type": "object",
+        "properties": {
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "cnic": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobileNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "step": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

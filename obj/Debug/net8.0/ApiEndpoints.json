@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "MetaWhatsAppBot.Controllers.StaticDataController",
+    "Method": "Post",
+    "RelativePath": "api/static-data",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "MetaWhatsAppBot.Models.StaticPayloadRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MetaWhatsAppBot.Controllers.WhatsAppController",
     "Method": "Verify",
     "RelativePath": "webhook",
