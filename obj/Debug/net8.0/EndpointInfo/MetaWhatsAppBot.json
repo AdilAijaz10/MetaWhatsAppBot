@@ -36,6 +36,37 @@
         }
       }
     },
+    "/api/static-data/client-personal-info": {
+      "post": {
+        "tags": [
+          "StaticData"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientPersonalInfoRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientPersonalInfoRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientPersonalInfoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/webhook": {
       "get": {
         "tags": [
@@ -108,6 +139,28 @@
         "properties": {
           "value": {
             "$ref": "#/components/schemas/Value"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClientPersonalInfoRequest": {
+        "type": "object",
+        "properties": {
+          "cnicNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "middleName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

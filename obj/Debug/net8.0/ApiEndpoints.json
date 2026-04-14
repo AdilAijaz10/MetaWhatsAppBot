@@ -16,6 +16,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MetaWhatsAppBot.Controllers.StaticDataController",
+    "Method": "InsertClientPersonalInfo",
+    "RelativePath": "api/static-data/client-personal-info",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "MetaWhatsAppBot.Models.ClientPersonalInfoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MetaWhatsAppBot.Controllers.WhatsAppController",
     "Method": "Verify",
     "RelativePath": "webhook",

@@ -54,5 +54,45 @@ namespace MetaWhatsAppBot.Controllers
                 });
             }
         }
+
+        [HttpPost("client-personal-info")]
+        public async Task<IActionResult> InsertClientPersonalInfo([FromBody] ClientPersonalInfoRequest request)
+        {
+            if (request == null)
+            {
+                return BadRequest(new { success = false, message = "Request body is required." });
+            }
+
+            try
+            {
+                var response = await _whatsAppService.InsertClientPersonalInfoAsync(request);
+
+                if (response.Note.Contains("failed", StringComparison.OrdinalIgnoreCase))
+                {
+                    return BadRequest(new
+                    {
+                        success = false,
+                        message = "Client personal info insertion failed.",
+                        response = response
+                    });
+                }
+
+                return Ok(new
+                {
+                    success = true,
+                    message = "Client personal info inserted successfully.",
+                    response = response
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "An unexpected error occurred.",
+                    error = ex.Message
+                });
+            }
+        }
     }
 }

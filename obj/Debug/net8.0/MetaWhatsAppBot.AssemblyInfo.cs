@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MetaWhatsAppBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+313f51f536a89d7022053f3ae0981a3300045a19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f02a1ffb61e91c30196f0fa3018c8f7776865f7f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MetaWhatsAppBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MetaWhatsAppBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
