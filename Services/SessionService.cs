@@ -6,7 +6,7 @@
     public class SessionService : ISessionService
     {
         private static readonly ConcurrentDictionary<string, UserSession> _sessions = new();
-
+        
         public Task<UserSession?> GetByPhoneAsync(string phone)
         {
             _sessions.TryGetValue(phone, out var session);

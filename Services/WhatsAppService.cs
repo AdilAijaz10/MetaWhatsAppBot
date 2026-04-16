@@ -284,6 +284,142 @@ namespace MetaWhatsAppBot.Services
             return response;
         }
 
+
+
+
+        public async Task<ClientIntimationInfoResponse> InsertClientIntimationInfoAsync(ClientIntimationInfoRequest request)
+        {
+            var connectionString = _config.GetConnectionString("OracleConnection");
+
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                connectionString = _config["ConnectionStrings:OracleConnection"] ?? string.Empty;
+            }
+
+            var response = new ClientIntimationInfoResponse
+            {
+                OrgId = 5,
+                BranchId = 14,
+                MainProductCode = 5,
+                SubProductCode = 12,
+                TakafulType = "D",
+                DocumentType = "P",
+                DocumentNo = "002070",
+                RecordType = "O",
+                DocumentYear = "2023",
+                IssueCount = 1,
+                EndorsementNo = 1,
+                ApplicationId = 13,
+                ClientCode = 2163,
+                CnicNo = request.CnicNo,
+                FirstName = request.FirstName,
+                MiddleName = request.MiddleName,
+                LastName = request.LastName,
+                ConnectionString = connectionString,
+                Note = "Database insert pending."
+            };
+
+            using (var connection = new OracleConnection(connectionString))
+            {
+                try
+                {
+                    await connection.OpenAsync();
+
+                    using var maxCommand = new OracleCommand("SELECT NVL(MAX(INFO_ID), 0) FROM IL_DOC_CLIENT_PERS_INFO_T", connection);
+                    var maxInfoIdResult = await maxCommand.ExecuteScalarAsync();
+                    var nextInfoId = 1;
+
+                    if (maxInfoIdResult != null && int.TryParse(maxInfoIdResult.ToString(), out var currentMax))
+                    {
+                        nextInfoId = currentMax + 1;
+                    }
+
+                    response.InfoId = nextInfoId;
+
+                    var queryBuilder = new StringBuilder();
+                    queryBuilder.Append("INSERT INTO IL_DOC_CLIENT_PERS_INFO_T (\n");
+                    queryBuilder.Append("    ORG_ID,\n");
+                    queryBuilder.Append("    BRANCH_ID,\n");
+                    queryBuilder.Append("    MAIN_PRODUCT_CODE,\n");
+                    queryBuilder.Append("    SUB_PRODUCT_CODE,\n");
+                    queryBuilder.Append("    TAKAFUL_TYPE,\n");
+                    queryBuilder.Append("    DOCUMENT_TYPE,\n");
+                    queryBuilder.Append("    DOCUMENT_NO,\n");
+                    queryBuilder.Append("    RECORD_TYPE,\n");
+                    queryBuilder.Append("    DOCUMENT_YEAR,\n");
+                    queryBuilder.Append("    ISSUE_COUNT,\n");
+                    queryBuilder.Append("    ENDORSEMENT_NO,\n");
+                    queryBuilder.Append("    APPLICATION_ID,\n");
+                    queryBuilder.Append("    CLIENT_CODE,\n");
+                    queryBuilder.Append("    INFO_ID,\n");
+                    queryBuilder.Append("    FIRST_NAME,\n");
+                    queryBuilder.Append("    MIDDLE_NAME,\n");
+                    queryBuilder.Append("    LAST_NAME\n");
+                    queryBuilder.Append(") VALUES (\n");
+                    queryBuilder.Append("    :orgId,\n");
+                    queryBuilder.Append("    :branchId,\n");
+                    queryBuilder.Append("    :mainProductCode,\n");
+                    queryBuilder.Append("    :subProductCode,\n");
+                    queryBuilder.Append("    :takafulType,\n");
+                    queryBuilder.Append("    :documentType,\n");
+                    queryBuilder.Append("    :documentNo,\n");
+                    queryBuilder.Append("    :recordType,\n");
+                    queryBuilder.Append("    :documentYear,\n");
+                    queryBuilder.Append("    :issueCount,\n");
+                    queryBuilder.Append("    :endorsementNo,\n");
+                    queryBuilder.Append("    :applicationId,\n");
+                    queryBuilder.Append("    :clientCode,\n");
+                    queryBuilder.Append("    :infoId,\n");
+                    queryBuilder.Append("    :firstName,\n");
+                    queryBuilder.Append("    :middleName,\n");
+                    queryBuilder.Append("    :lastName\n");
+                    queryBuilder.Append(")");
+
+                    string insertQuery = queryBuilder.ToString();
+
+                    using (var command = new OracleCommand(insertQuery, connection))
+                    {
+                        command.Parameters.Add(new OracleParameter("orgId", OracleDbType.Int32) { Value = response.OrgId });
+                        command.Parameters.Add(new OracleParameter("branchId", OracleDbType.Int32) { Value = response.BranchId });
+                        command.Parameters.Add(new OracleParameter("mainProductCode", OracleDbType.Int32) { Value = response.MainProductCode });
+                        command.Parameters.Add(new OracleParameter("subProductCode", OracleDbType.Int32) { Value = response.SubProductCode });
+                        command.Parameters.Add(new OracleParameter("takafulType", OracleDbType.Varchar2) { Value = response.TakafulType });
+                        command.Parameters.Add(new OracleParameter("documentType", OracleDbType.Varchar2) { Value = response.DocumentType });
+                        command.Parameters.Add(new OracleParameter("documentNo", OracleDbType.Varchar2) { Value = response.DocumentNo });
+                        command.Parameters.Add(new OracleParameter("recordType", OracleDbType.Varchar2) { Value = response.RecordType });
+                        command.Parameters.Add(new OracleParameter("documentYear", OracleDbType.Varchar2) { Value = response.DocumentYear });
+                        command.Parameters.Add(new OracleParameter("issueCount", OracleDbType.Int32) { Value = response.IssueCount });
+                        command.Parameters.Add(new OracleParameter("endorsementNo", OracleDbType.Int32) { Value = response.EndorsementNo });
+                        command.Parameters.Add(new OracleParameter("applicationId", OracleDbType.Int32) { Value = response.ApplicationId });
+                        command.Parameters.Add(new OracleParameter("clientCode", OracleDbType.Int32) { Value = response.ClientCode });
+                        command.Parameters.Add(new OracleParameter("infoId", OracleDbType.Int32) { Value = response.InfoId });
+                        command.Parameters.Add(new OracleParameter("firstName", OracleDbType.Varchar2) { Value = response.FirstName });
+                        command.Parameters.Add(new OracleParameter("middleName", OracleDbType.Varchar2) { Value = response.MiddleName });
+                        command.Parameters.Add(new OracleParameter("lastName", OracleDbType.Varchar2) { Value = response.LastName });
+
+                        await command.ExecuteNonQueryAsync();
+                        response.Note = "Data inserted successfully into IL_DOC_CLIENT_PERS_INFO_T table.";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    response.Note = $"Database insert failed: {ex.Message}";
+                    Console.WriteLine($"Database error: {ex.Message}");
+                }
+                finally
+                {
+                    if (connection.State == System.Data.ConnectionState.Open)
+                    {
+                        await connection.CloseAsync();
+                    }
+                }
+            }
+
+            return response;
+        }
+
+
+
         private async Task<bool> SendMessage(string to, string text)
         {
             var token = _config["MetaWhatsApp:AccessToken"];

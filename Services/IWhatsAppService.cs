@@ -7,5 +7,7 @@ namespace MetaWhatsAppBot.Services
         Task<bool> ProcessMessage(string from, string message);
         Task<StaticPayloadResponse> ProcessStaticPayloadAsync(StaticPayloadRequest request);
         Task<ClientPersonalInfoResponse> InsertClientPersonalInfoAsync(ClientPersonalInfoRequest request);
+
+        Task<ClientIntimationInfoResponse> InsertClientIntimationInfoAsync(ClientIntimationInfoRequest request);
     }
 }
