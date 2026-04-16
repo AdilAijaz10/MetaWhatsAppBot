@@ -76,17 +76,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientIntimationInfoRequest"
+                "$ref": "#/components/schemas/ClaimIntimationRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientIntimationInfoRequest"
+                "$ref": "#/components/schemas/ClaimIntimationRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientIntimationInfoRequest"
+                "$ref": "#/components/schemas/ClaimIntimationRequest"
               }
             }
           }
@@ -174,22 +174,50 @@
         },
         "additionalProperties": false
       },
-      "ClientIntimationInfoRequest": {
+      "ClaimIntimationRequest": {
         "type": "object",
         "properties": {
-          "cnicNo": {
+          "lossType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "eventDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reportingDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "claimYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemCnicNo": {
             "type": "string",
             "nullable": true
           },
-          "firstName": {
+          "policyNo": {
             "type": "string",
             "nullable": true
           },
-          "middleName": {
+          "policyHolder": {
             "type": "string",
             "nullable": true
           },
-          "lastName": {
+          "insuredId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lossNature": {
+            "type": "string",
+            "nullable": true
+          },
+          "causeOfLoss": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reportedMobNm": {
             "type": "string",
             "nullable": true
           }

@@ -96,7 +96,7 @@ namespace MetaWhatsAppBot.Controllers
         }
 
         [HttpPost("client-Intimation-info")]
-        public async Task<IActionResult> InsertClientIntimationInfoInfo([FromBody] ClientIntimationInfoRequest request)
+        public async Task<IActionResult> InsertClaimIntimation([FromBody] ClaimIntimationRequest request)
         {
             if (request == null)
             {
@@ -105,23 +105,23 @@ namespace MetaWhatsAppBot.Controllers
 
             try
             {
-                var response = await _whatsAppService.InsertClientIntimationInfoAsync(request);
+                var response = await _whatsAppService.InsertClaimIntimationAsync(request);
 
                 if (response.Note.Contains("failed", StringComparison.OrdinalIgnoreCase))
                 {
                     return BadRequest(new
                     {
                         success = false,
-                        message = "Client personal info insertion failed.",
-                        response = response
+                        message = "Claim intimation insertion failed.",
+                        response
                     });
                 }
 
                 return Ok(new
                 {
                     success = true,
-                    message = "Client personal info inserted successfully.",
-                    response = response
+                    message = "Claim intimation inserted successfully.",
+                    response
                 });
             }
             catch (Exception ex)
@@ -129,7 +129,7 @@ namespace MetaWhatsAppBot.Controllers
                 return StatusCode(500, new
                 {
                     success = false,
-                    message = "An unexpected error occurred.",
+                    message = "Unexpected error occurred.",
                     error = ex.Message
                 });
             }

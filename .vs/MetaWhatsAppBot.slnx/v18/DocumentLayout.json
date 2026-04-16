@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|d:\\softwareprojects\\.netprojects\\metawhatsappbot\\controllers\\staticdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|solutionrelative:controllers\\staticdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|d:\\softwareprojects\\.netprojects\\metawhatsappbot\\models\\clientintimationinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|solutionrelative:models\\clientintimationinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|d:\\softwareprojects\\.netprojects\\metawhatsappbot\\services\\whatsappservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|solutionrelative:services\\whatsappservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|d:\\softwareprojects\\.netprojects\\metawhatsappbot\\services\\sessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|solutionrelative:services\\sessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|d:\\softwareprojects\\.netprojects\\metawhatsappbot\\controllers\\whatsappcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|solutionrelative:controllers\\whatsappcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|d:\\softwareprojects\\.netprojects\\metawhatsappbot\\models\\clientintimationinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|solutionrelative:models\\clientintimationinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|d:\\softwareprojects\\.netprojects\\metawhatsappbot\\services\\iwhatsappservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|solutionrelative:services\\iwhatsappservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|d:\\softwareprojects\\.netprojects\\metawhatsappbot\\controllers\\staticdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|solutionrelative:controllers\\staticdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|d:\\softwareprojects\\.netprojects\\metawhatsappbot\\services\\sessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|solutionrelative:services\\sessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{85BC57CE-8958-2D4A-FF78-BA9C7A29F31A}|MetaWhatsAppBot.csproj|d:\\softwareprojects\\.netprojects\\metawhatsappbot\\models\\clientpersonalinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,20 +62,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "ClientIntimationInfo.cs",
               "DocumentMoniker": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\Models\\ClientIntimationInfo.cs",
               "RelativeDocumentMoniker": "Models\\ClientIntimationInfo.cs",
-              "ToolTip": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\Models\\ClientIntimationInfo.cs",
-              "RelativeToolTip": "Models\\ClientIntimationInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAMAAAAwAAAAAAAAAA==",
+              "ToolTip": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\Models\\ClientIntimationInfo.cs*",
+              "RelativeToolTip": "Models\\ClientIntimationInfo.cs*",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAQAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-16T06:37:45.201Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "SessionService.cs",
               "DocumentMoniker": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\Services\\SessionService.cs",
               "RelativeDocumentMoniker": "Services\\SessionService.cs",
@@ -94,14 +94,14 @@
               "RelativeDocumentMoniker": "Services\\WhatsAppService.cs",
               "ToolTip": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\Services\\WhatsAppService.cs",
               "RelativeToolTip": "Services\\WhatsAppService.cs",
-              "ViewState": "AgIAAJIAAAAAAAAAAAAkwCEBAAB8AAAAAAAAAA==",
+              "ViewState": "AgIAAIEBAAAAAAAAAAAowI0BAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-14T06:07:32.672Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "WhatsAppController.cs",
               "DocumentMoniker": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\Controllers\\WhatsAppController.cs",
               "RelativeDocumentMoniker": "Controllers\\WhatsAppController.cs",
@@ -114,26 +114,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "StaticDataController.cs",
               "DocumentMoniker": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\Controllers\\StaticDataController.cs",
               "RelativeDocumentMoniker": "Controllers\\StaticDataController.cs",
               "ToolTip": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\Controllers\\StaticDataController.cs",
               "RelativeToolTip": "Controllers\\StaticDataController.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAwwF8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAkwGsAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-14T06:05:58.624Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "IWhatsAppService.cs",
               "DocumentMoniker": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\Services\\IWhatsAppService.cs",
               "RelativeDocumentMoniker": "Services\\IWhatsAppService.cs",
               "ToolTip": "D:\\softwareProjects\\.NetProjects\\MetaWhatsAppBot\\Services\\IWhatsAppService.cs",
               "RelativeToolTip": "Services\\IWhatsAppService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAIAwwAoAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAwAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-16T06:11:46.841Z",
               "EditorCaption": ""
@@ -148,8 +148,7 @@
               "RelativeToolTip": "Models\\ClientPersonalInfo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-16T06:11:30.786Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-16T06:11:30.786Z"
             },
             {
               "$type": "Document",
@@ -161,8 +160,7 @@
               "RelativeToolTip": "Services\\ISessionService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-16T06:11:45.424Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-16T06:11:45.424Z"
             },
             {
               "$type": "Document",
